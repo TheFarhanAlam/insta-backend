@@ -16,7 +16,7 @@ app.use("/", User);
 app.use("/post", Post);
 app.use("/user", UserProfile);
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(`${process.env.MONGO_URL}`)
 .then(() => {
     console.log("Database Connected");
 })
