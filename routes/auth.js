@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
             return res.status(404).json({error: "Please register first"})
         };
         const matchPassword = await bcrypt.compare(password, user.password);
-        const token = await jwt.sign({_id: user._id}, process.env.SECRET);
+        const token = await jwt.sign({_id: user._id}, "heytherethisisaprivatekey");
         if (!matchPassword) {
             return res.status(404).json({error: "Please fill right credentials"})
         };
@@ -55,9 +55,6 @@ router.post("/login", async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-});
-router.get("/protected",Authenticate ,(req, res) => {
-    res.json({name: "Hello"})
 });
 
 export default router;
