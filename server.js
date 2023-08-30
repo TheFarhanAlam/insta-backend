@@ -9,6 +9,8 @@ import UserProfile from "./routes/user.js";
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+const DB = "mongodb+srv://thefarhandeveloper:farhanalam77@insta-clone.cdcwgr4.mongodb.net/?retryWrites=true&w=majority";
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -16,7 +18,7 @@ app.use("/", User);
 app.use("/post", Post);
 app.use("/user", UserProfile);
 
-mongoose.connect(`${process.env.MONGO_URL}`)
+mongoose.connect(DB)
 .then(() => {
     console.log("Database Connected");
 })
